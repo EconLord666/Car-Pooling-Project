@@ -1,0 +1,299 @@
+* {
+  font-family: "Inter", sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  min-height: 90px;
+  width: 100%;
+  background-color: #861f41;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.header a.logo-link {
+  min-width: 590px;
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo-img {
+  margin: 2rem;
+}
+
+.title .titleText {
+  margin-left: 0rem;
+  color: white;
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.title .subText {
+  margin: 0rem;
+  color: white;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+img.logo {
+  height: 80px;
+}
+
+.userId {
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2rem;
+}
+
+.userId svg.user-icon {
+  background-image: url(./pics/user.png);
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.userId .user-info {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}
+
+.userId .user-info h5 {
+  padding-bottom: 0.5rem;
+  color: white;
+}
+
+.userId .user-info a {
+  color: white;
+  text-decoration: none;
+  background-color: rgba(147, 28, 121, 0.886);
+  border-radius: 10px;
+  border: 2px solid white;
+  padding: 0.1rem 0.5rem;
+}
+
+nav {
+  background-color: #9e4c67;
+  padding: 1rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-shadow: 3px 3px 5px 1px #727070;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  padding: 0.3rem 0.5rem;
+  color: rgba(196, 49, 71, 0.886);
+  background-color: rgba(255, 255, 255, 0.741);
+  border: 2px solid rgba(196, 49, 71, 0.886);
+}
+
+nav ul li a.active {
+  color: white;
+  background-color: rgba(196, 49, 71, 0.886);
+  border: 2px solid white;
+}
+
+nav ul li form {
+  height: 100%;
+  border-radius: 20px;
+}
+
+nav ul li form input,
+nav ul li form button {
+  height: 100%;
+  font-size: 1rem;
+}
+
+main {
+  min-height: calc(100vh - 275px);
+  margin: 0rem 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+main .left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0.5rem;
+}
+
+main .left-section h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: monospace;
+}
+
+main .left-section .btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+main .left-section .btns .user-icon {
+  background-image: url(./pics/user.png);
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main .left-section .btns a {
+  background-color: #dc2864;
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+main .left-section .login-form,
+main .left-section .create-account-form,
+main .left-section .create-post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+main .left-section .login-form #login,
+main .left-section .create-account-form #create-account,
+main .left-section .create-post #create-post {
+  margin-top: 2rem;
+}
+
+main .left-section .create-post #create-post textarea,
+main .left-section .add-comment #reply textarea {
+  resize: none;
+}
+
+main .left-section .login-form #login button,
+main .left-section .create-account-form #create-account button,
+main .left-section .create-post #create-post button,
+main .left-section .add-comment #reply button {
+  margin: 0.4rem;
+  float: right;
+}
+
+main .left-section .sorting-btns button {
+  margin: 0.4rem 0.5rem;
+  padding: 0.2rem;
+  font-size: large;
+  color: white;
+  background-color: #dc2864;
+}
+main .left-section .post-card,
+main .left-section .add-comment,
+main .left-section .comments {
+  padding: 0.4rem;
+  margin: 0.4rem;
+  flex-grow: 0.5;
+  flex-basis: 3px;
+  border: 2px solid pink;
+  border-radius: 10px;
+  width: 95%;
+}
+
+main .left-section .add-comment form#reply {
+  width: 100%;
+}
+
+main .left-section .add-comment textarea {
+  width: 100%;
+}
+
+main .left-section .comment-card {
+  display: flex;
+  align-items: baseline;
+  border: 2px solid pink;
+  padding: 1rem;
+  margin: 0.4rem;
+  border-radius: 10px;
+  width: 95%;
+}
+
+main .left-section .comment-card svg {
+  background-image: url(./pics/user.png);
+  width: 35px;
+  height: 35px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main .left-section .comment-card p {
+  width: 50%;
+  margin-left: 0.5rem;
+}
+
+main .left-section .contact-us h1 {
+  text-align: left;
+}
+
+main .right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+main .right-section img.adv1 {
+  height: 25vh;
+}
+
+footer {
+  padding: 1rem 1rem;
+  background-color: #861f41;
+}
+
+footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+footer ul li a,
+footer ul li h3 {
+  color: white;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 880px) {
+  .header {
+    flex-direction: column;
+  }
+  .userId {
+    align-self: flex-end;
+  }
+  main {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  nav ul {
+    flex-direction: column;
+  }
+  nav ul li {
+    margin: 0.7rem;
+  }
+}

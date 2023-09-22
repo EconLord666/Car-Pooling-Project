@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deal me in @ VT</title>
+    <!--Google font "Inter"-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--header-->
+    <header>
+      <section class="header">
+        <a href="index.html" class="logo-link">
+          <!--The logo is downloaded from flaticon-->
+          <div class="logo-img">
+            <img src="./pics/car-sharing.png" class="logo" alt="Logo" />
+          </div>
+
+          <div class="title">
+            <h3 class="titleText">Deal me in @ VT</h3>
+            <h3 class="subText">Find buddies to enjoy the ride together!</h3>
+          </div>
+        </a>
+      </section>
+    </header>
+    <!--nav bar-->
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="create_account.html">Create Account</a></li>
+        <li><a class="active" href="login.html">Login</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <!--main content-->
+    <main>
+      <div class="left-section">
+        <div class="login-form">
+          <h1>Login</h1>
+          <p>Please enter account info to login.</p>
+          <form action="#" method="post" id="login">
+            <label for="email">Email Address</label>
+            <br />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter VT email..."
+            />
+            <br />
+            <label for="password">Password</label>
+            <br />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password..."
+            />
+            <br />
+            <button>
+              <a
+                href="index_user.html"
+                style="text-decoration: none; color: black"
+                >Login</a
+              >
+            </button>
+            <!--after we complete the backend functions, we will use the button below-->
+            <!-- <button type="submit">Login</button> -->
+          </form>
+        </div>
+      </div>
+      <div class="right-section">
+        <a href="https://www.nike.com/">
+          <img src="./pics/adv2.jpg" class="adv1" alt="advertisement" />
+        </a>
+      </div>
+    </main>
+    <!--footer-->
+    <footer>
+      <ul>
+        <li><a href="about.html">Contact us</a></li>
+        <li>
+          <h3>Copyright 2023 VT Deal me in</h3>
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>
