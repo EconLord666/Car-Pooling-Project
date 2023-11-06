@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Deal me in @ VT | {% block page-title %} {% endblock %}</title>
+    {% block javascript %} {% endblock %}
+    <!--Google font "Inter"-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans+TC&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static "styles/styles.css" %}"/>
+    {% block additionalStyles %} {% endblock %}
+</head>
+<body>
+<!--header-->
+<header>
+    <section class="header">
+        {% if request.session.username %}
+            <a href="{% url "carpool:user_home" %}" class="logo-link">
+                <!--The logo is downloaded from flaticon-->
+                <div class="logo-img">
+                    <img src="{% static "/pics/car-sharing.png" %}" class="logo" alt="Logo"/>
+                </div>
+
+                <div class="title">
+                    <h3 class="titleText">Deal me in @ VT</h3>
+                    <h3 class="subText">Find buddies to enjoy the ride together!</h3>
+                </div>
+            </a>
+        {% else %}
+            <a href="{% url "carpool:home" %}" class="logo-link">
+                <!--The logo is downloaded from flaticon-->
+                <div class="logo-img">
+                    <img src="{% static "/pics/car-sharing.png" %}" class="logo" alt="Logo"/>
+                </div>
+
+                <div class="title">
+                    <h3 class="titleText">Deal me in @ VT</h3>
+                    <h3 class="subText">Find buddies to enjoy the ride together!</h3>
+                </div>
+            </a>
+        {% endif %}
+        {% if request.session.username %}
+            <div class="userId">
+                <div class="user-logo">
+                    <img src="{% static "/pics/user.png" %}" class="user-img" alt="user_image"/>
+                </div>
+                <div class="user-info">
+                    <h5>Logged in as {{ request.session.username }}</h5>
+                    <a href="{% url "carpool:logout" %}">Log out</a>
+                </div>
+            </div>
+
+        {% endif %}
+    </section>
+</header>
+<!--nav bar-->
+<nav>
+    {% if request.session.username %}
+        <ul>
+            <li><a href="{% url "carpool:user_home" %}">Home</a></li>
+            <li><a href="{% url "carpool:carpool_post_list" %}">Posts</a></li>
+            <li><a href="{% url "carpool:create_post" %}">Create New Post</a></li>
+            <li><a href="{% url "carpool:about" %}">About</a></li>
+        </ul>
+    {% else %}
+        <ul>
+            <li><a href="{% url "carpool:home" %}">Home</a></li>
+            <li><a href="{% url "carpool:create_account" %}">Create Account</a></li>
+            <li><a href="{% url "carpool:login" %}">Login</a></li>
+            <li><a href="{% url "carpool:about" %}">About</a></li>
+        </ul>
+    {% endif %}
+</nav>
+<!--main content-->
+<main>
+    <div class="left-section">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="right-section">
+        <!--
+          The advertisement pics are downloaded from unsplash.com,
+          which has no copyright.
+        -->
+        <a href="https://www.amazon.com/"
+        ><img src="{% static "pics/adv1.jpg" %}" class="adv1" alt="advertisement"/>
+        </a>
+        <a href="https://www.nike.com/">
+            <img src="{% static "pics/adv2.jpg" %}" class="adv1" alt="advertisement"/>
+        </a>
+    </div>
+</main>
+<!--footer-->
+<footer>
+    <ul>
+        <li><a href="{% url "carpool:about" %}">Contact us</a></li>
+        <li>
+            <h3>Copyright 2023 VT Deal me in</h3>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>

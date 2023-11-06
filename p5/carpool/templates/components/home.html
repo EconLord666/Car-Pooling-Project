@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page-title %}home{% endblock %}
+
+{% block content %}
+    <h1>
+        Finding someone to zip back and forth between VT campuses?<br/>
+        This is the place you get to find your carpooling partners!
+    </h1>
+    <div class="btns">
+        <a href="{% url "carpool:create_account" %}">Create an Account</a>
+        <a href="{% url "carpool:login" %}">Login</a>
+    </div>
+{% endblock %}

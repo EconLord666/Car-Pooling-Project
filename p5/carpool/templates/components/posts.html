@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block javascript %}
+    <!--include JQuery and link to javascript file-->
+    <script src="{% static  "js/jquery-3.7.1.min.js" %}"></script>
+    <script src={% static "js/script.js" %}></script>
+    <script src="{% static "js/false.js" %}"></script>
+    <script src="{% static "js/posts.js" %}"></script>
+{% endblock %}
+{% block page-title %}Posts{% endblock %}
+
+{% block additionalStyles %}
+    <link rel="stylesheet" href="{% static "styles/styles.css" %}"/>
+{% endblock %}
+
+{% block content %}
+    {% if posts %}
+        <div class="sorting-btns">
+            <button class="newest">Newest</button>
+            <button class="popular">Popular</button>
+            <button class="archive">Archive</button>
+            <!--Here is the search bar-->
+            <form id="search" action="search-results.html" method="GET">
+                <input type="text" placeholder=" Arlington, NVC..." name="search"/>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <section class="post-list">
+            {% for post in posts %}
+                <div class="post-card"
+                     data-post-id="{{ post.id }}"
+                     data-post-comments="{{ post.comments }}"
+                     data-post-time="{{ post.date_posted.isoformat }}">
+                    <a href="#">
+                        <h2>
+                            <a href="{% url "carpool:post-detail" post.id %}">  {{ post.title }}</a>
+                        </h2>
+                    </a>
+                    <p>{{ post.description }}</p>
+                    <br/>
+                    <p>
+                        Submitted by {{ post.author }} on {{ post.date_posted }} - ({{ post.comments }} comments)
+                        {% if request.session.username == post.author %}
+                            <a class="edit-btn" href="{% url "carpool:edit_post" post.id %}">edit</a>
+                        {% endif %}
+                        {% if request.session.role == "admin" %}
+                            <a class="delete-btn"
+                               href="#"
+                               data-delete-url="{% url 'carpool:delete_post' post.id %}"
+                            >delete</a>
+                        {% endif %}
+                    </p>
+
+                </div>
+            {% endfor %}
+            {% else %}
+            <h1>Sorry! <br/>
+                No post found at this time...</h1>
+        </section>
+
+
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page-title %}Edit Post{% endblock %}
+
+{% block header %}
+    <section class="header">
+        <a href="{% url "carpool:user_home" %}" class="logo-link">
+            <!--The logo is downloaded from flaticon-->
+            <div class="logo-img">
+                <img src="{% static "/pics/car-sharing.png" %}" class="logo" alt="Logo"/>
+            </div>
+
+            <div class="title">
+                <h3 class="titleText">Deal me in @ VT</h3>
+                <h3 class="subText">Find buddies to enjoy the ride together!</h3>
+            </div>
+        </a>
+        <div class="userId">
+            <div class="user-logo">
+                <img src="{% static "/pics/user.png" %}" class="user-img" alt="user_image"/>
+            </div>
+            <div class="user-info">
+                <h5>Logged in as {{ request.session.username }}</h5>
+                <a href="{% url "carpool:logout" %}">Log out</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block navbar %}
+    <ul>
+        <li><a href="{% url "carpool:home" %}">Home</a></li>
+        <li><a href="{% url "carpool:carpool_post_list" %}">Posts</a></li>
+        <li><a class="active" href="{% url "carpool:create_account" %}">Create New Post</a></li>
+        <li><a href="{% url "carpool:about" %}">About</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="add-post">
+        <h4>Edit Post</h4>
+        <form action="{% url "carpool:edit_post" post.id %}" method="POST" id="add-post">
+            {% csrf_token %}
+            <textarea
+                    name="title"
+                    id="title"
+                    rows="2"
+                    maxlength="200"
+                    placeholder="title"
+            >{{ post.title }}
+            </textarea>
+            <br/>
+            <textarea
+                    name="content"
+                    id="content"
+                    rows="5"
+                    maxlength="1000"
+                    placeholder="content"
+            >{{ post.description }}
+            </textarea>
+            <br/>
+            <button id="submit-post-button" type="submit">Save Changes</button>
+            <button id="cancel-post-button">Cancel</button>
+        </form>
+    </div>
+{% endblock %}

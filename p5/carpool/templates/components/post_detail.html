@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+{% block javascript %}
+    <!--include JQuery and link to javascript file-->
+    <script src="{% static  "js/jquery-3.7.1.min.js" %}"></script>
+    {#    <script src={% static "js/script.js" %}></script>#}
+    {#    <script src="{% static "js/false.js" %}"></script>#}
+    {#    <script src="{% static "js/posts.js" %}"></script>#}
+    <script src="{% static "js/post_detail.js" %}"></script>
+{% endblock %}
+{% block page-title %}Posts{% endblock %}
+
+{% block header %}
+    <section class="header">
+        <a href="{% url "carpool:user_home" %}" class="logo-link">
+            <!--The logo is downloaded from flaticon-->
+            <div class="logo-img">
+                <img src="{% static "/pics/car-sharing.png" %}" class="logo" alt="Logo"/>
+            </div>
+
+            <div class="title">
+                <h3 class="titleText">Deal me in @ VT</h3>
+                <h3 class="subText">Find buddies to enjoy the ride together!</h3>
+            </div>
+        </a>
+        <div class="userId">
+            <div class="user-logo">
+                <img src="{% static "/pics/user.png" %}" class="user-img" alt="user_image"/>
+            </div>
+            <div class="user-info">
+                <h5>Logged in as {{ request.session.username }}</h5>
+                <a href="{% url "carpool:logout" %}">Log out</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block navbar %}
+    <ul>
+        <li><a href="{% url "carpool:home" %}">Home</a></li>
+        <li><a class="active" href="{% url "carpool:carpool_post_list" %}">Posts</a></li>
+        <li><a href="{% url "carpool:create_post" %}">Create New Post</a></li>
+        <li><a href="{% url "carpool:about" %}">About</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="post-card">
+        <h2>{{ post.title }}</h2>
+        <h5>{{ post.date_posted }}</h5>
+        <br/>
+        <p>
+            {{ post.description }}
+        </p>
+        <br/>
+        <p>Submitted by {{ post.author }} on {{ post.date_posted }}</p>
+    </div>
+    <div class="add-comment">
+        <h4>Add a comment</h4>
+        <form action="{% url "carpool:submit_comment" %}" id="add-comment"
+              data-postId="{{ post.id }}">
+            {#              data-ajax-url="{% url "carpool:submit_comment" %}"#}
+            <textarea
+                    name="comment"
+                    id="comment"
+                    rows="3"
+                    maxlength="50"
+                    placeholder="your reply..."
+            ></textarea>
+            <br/>
+            <button id="submit-comment-button"
+                    type="submit">
+                Submit
+            </button>
+            <button id="cancel-comment-button" type="reset">Cancel</button>
+        </form>
+    </div>
+    <div class="comments">
+        <h4>Comments</h4>
+        {#        <div class="comment-card">#}
+        {#            <img src="{% static "/pics/user.png" %}" class="user-icon" alt="user-icon"/>#}
+        {#            <p>So glad u asked! Deal me in!</p>#}
+        {#            <p>Commented by Jerry@vt.edu on 9/1/2023</p>#}
+        {#        </div>#}
+        {#        <div class="comment-card">#}
+        {#            <img src="{% static "/pics/user.png" %}" class="user-icon" alt="user-icon"/>#}
+        {#            <p>Deal me in!</p>#}
+        {#            <p>Commented by Kevin@vt.edu on 9/1/2023</p>#}
+        {#        </div>#}
+        {#        <div class="comment-card">#}
+        {#            <img src="{% static "/pics/user.png" %}" class="user-icon" alt="user-icon"/>#}
+        {#            <p>#}
+        {#                What about after the second class? Are you heading back to NCR?#}
+        {#            </p>#}
+        {#            <p>Commented by Mary@vt.edu on 9/1/2023</p>#}
+        {#        </div>#}
+        {% if comments %}
+            {% for comment in comments %}
+                <div class="comment-card">
+                    <img src="{% static "/pics/user.png" %}" class="user-icon" alt="user-icon"/>
+                    <p> {{ comment.text }}
+                    </p>
+                    <p>Commented by {{ comment.author }} on {{ comment.date_posted }}</p>
+                </div>
+                
+            {% endfor %}
+
+        {% endif %}
+    </div>
+{% endblock %}

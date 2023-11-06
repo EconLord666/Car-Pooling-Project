@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page-title %}home{% endblock %}
+
+{% block navbar %}
+    <ul>
+        <li><a href="{% url "carpool:home" %}">Home</a></li>
+        <li><a href="{% url "carpool:create_account" %}">Create Account</a></li>
+        <li><a href="{% url "carpool:login" %}">Login</a></li>
+        <li><a class="active" href="{% url "carpool:about" %}">About</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="contact-us">
+        <h1>Contact Information:</h1>
+        <h2>email: dealmein@vt.edu</h2>
+        <h2>phone: (571)1234567</h2>
+        <h2>address: 7054 Haycock Rd, Falls Church, VA 22043</h2>
+    </div>
+{% endblock %}

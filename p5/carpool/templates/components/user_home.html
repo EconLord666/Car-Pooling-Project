@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Welcome back {{ request.session.username }}!</h1>
+    <div class="btns">
+        <a href="{% url "carpool:carpool_post_list" %}">See Posts Now!</a>
+    </div>
+{% endblock %}
